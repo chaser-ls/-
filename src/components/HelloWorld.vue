@@ -9,7 +9,9 @@
           <el-tab-pane label="Top250" name="Top250">
           </el-tab-pane>
         </el-tabs>
-        <router-view></router-view>
+        <keep-alive>
+          <router-view></router-view>
+        </keep-alive>
       </el-main>
     </el-container>
   </div>

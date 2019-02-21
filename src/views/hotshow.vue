@@ -1,7 +1,7 @@
 <template>
     <div class="hotshow">
        <el-row>
-            <el-col :span="11" v-for="eachMovie in hotshowMovieMessage" :key="eachMovie.index" class="">
+            <el-col :span="11" v-for="(eachMovie,index) in hotshowMovieMessage" :key="eachMovie.index"  v-bind:class="{'col-11-marginRight':index%2 === 0}">
                 <el-card :body-style="{ padding: '0px' }">
                     <img :src="eachMovie.movieImg" class="image">
                     <div style="padding: 14px;">
@@ -28,15 +28,6 @@ export default {
         }
     },
     created(){
-        // this.$axios.get('/api/v2/movie/in_theaters',{
-        //         params:{
-        //             count:10,
-        //             start:0
-        //         }
-        //     })
-        //     .then(res =>{
-        //         console.log(res)
-        //     })
         this.requestHotShowData('/api/v2/movie/in_theaters',10,0)
     },
     methods:{
@@ -98,11 +89,24 @@ display: block;
     clear: both
 }
 .col-11-marginRight{
-    margin-right:15px
+    margin-right:3.33333%
 }
 </style>
-<style>
-.hotshow .el-rate__icon{
+<style >
+/* .hotshow .el-rate__icon{
     font-size:5px
+}
+.hotshow .el-col-11{
+    width:47.86666%
+} */
+</style>
+<style lang="less">
+.hotshow{
+    .el-rate__icon{
+        font-size: 5px
+    }
+    .el-col-11{
+        width: 47.86666%
+    }
 }
 </style>
